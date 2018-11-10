@@ -113,12 +113,10 @@ class CSP:
         assignments and inferences that took place in previous
         iterations of the loop.
         """
-        
         self.backtrack_counter += 1
         done = True
         for var in assignment:
             if not len(assignment[var]) == 1: done = False
-
         
         if done:
             return assignment
@@ -142,7 +140,7 @@ class CSP:
         of legal values has a length greater than one.
         """
         for var in assignment:
-            if not len(var) == 1: return var
+            if not len(assignment[var]) == 1: return var
 
     def inference(self, assignment, queue):
         """The function 'AC-3' from the pseudocode in the textbook.
@@ -242,7 +240,6 @@ def print_sudoku_solution(solution):
 
 
 if __name__ == '__main__':
-    sys.setrecursionlimit(30550)
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
     else: 
